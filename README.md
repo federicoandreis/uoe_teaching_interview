@@ -7,3 +7,5 @@ The learning material for this lecture comprises:
 - video (MP4 | ...)
 - closed captions (SRT)
 - transcript (TXT).
+
+This material is released under XX XX X.X.
