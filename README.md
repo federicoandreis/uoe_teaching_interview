@@ -8,4 +8,5 @@ The learning material for this lecture comprises:
 - closed captions (SRT)
 - transcript (TXT).
 
-This material is released under XX XX X.X.
+WCAG Level AAA pass.
+The recording was realised using OBS 26.1.1 (link) and YYYY. This material is released under XX XX X.X.
