@@ -2,7 +2,7 @@
 This repository contains the materials requested for my teaching interview at the University of Edinburgh, 8th March 2021. The date on the slides is that of the 5th March 2021, which is the day of submission (as well as the 194th anniversary of Pierre-Simon Laplace's death, it seemed a nice coincidence!)
 
 ## Direct links
-The materials comprises:
+The material comprises:
 
 - slides ([PDF](presentation.pdf) | [RMD](presentation.Rmd) + [style file](tex.tex))
 - video ([YouTube](https://youtu.be/_6c_hZJGp6Q))
