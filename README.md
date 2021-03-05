@@ -4,7 +4,7 @@ This repository contains the materials requested for my teaching interview at th
 ## Direct links
 The learning material for this lecture comprises:
 
-- slides ([PDF](presentation.pdf) | [RMD](presentation.rmd) + [style file](tex.tex))
+- slides ([PDF](presentation.pdf) | [RMD](presentation.Rmd) + [style file](tex.tex))
 - video ([YouTube](https://youtu.be/_6c_hZJGp6Q))
 - transcript ([DOCX](transcript.docx) | [TXT](transcript.txt)).
 
