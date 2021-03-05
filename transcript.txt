@@ -1,0 +1,58 @@
+--Title page--
+Hi everyone, I’m Dr Federico Andreis and this is the third lecture of Probability - MATH08066. Today we will be introducing one of the most famous and widely used results of the theory of probability: Bayes’ theorem. To do so, I will try to provide an idea of the intuition behind the result, why it is useful, and we will work our way through a couple of examples arising from real applications.
+
+--Course materials and resources--
+Before we dive in, I’d like to say that I was very pleased to see how many of you have used Piazza to share their questions and offer answers, also highlighting that you have been regularly engaging with the weekly coursework. The interaction there has been great so far, keep at it! The theory of probability can be tricky, collaborative study efforts will go a long way towards improving your understanding.
+Remember that you can access the course main page at any time: it contains all the relevant information, the list of lectures and links to slides and recordings, as well as the trigger warning list of potentially sensitive examples that I will be using throughout.
+I hope that, by now, you feel familiar with the contents of our last lecture on conditional probabilities, as we will take it from there today – if not, make sure to make use of the forum and office hours (but please, remember to book your slot!)
+Like for all lectures in this course, the slides will contain links to additional resources to assist your independent study. You will find hyperlinks as usual as points of interest come up, as well as a few suggestions for further readings at the end.
+Ok! Let me disappear, and let’s get started.
+
+--A (very) diverse set of problems...--
+Let me ask you a question. On this slide, you can see a list of real-life problems that arose across the past 250 years or so. I want you to think about what they might have in common. 
+Let’s take a look! We have:
+-	to build a case for the abolition of capital punishment in France, towards the end of the 18th century 
+-	to discover the super-secret daily mechanic setting of Enigma, the German state-of-the-art encryption device that created so much troubles to the Allies’ secret services during WWII
+-	to find the location of a hydrogen bomb lost in the Mediterranean Sea, after the crash of a B-52 bomber in 1966
+-	to create a counter-argument to an expert testimony that led to wrongfully sentence to life an English mum towards the end of the 90s, for the murder of her two infants
+-	to assess how likely it is to actually have a disease, for which a diagnostic test resulted positive (this is certainly not a recent problem, although a very hot one in the past year!)
+-	to create an algorithm able to discern whether an email is “good” or “bad”.
+These problems could not be more diverse, yet they have something very specific in common. What could that be? I’ll leave you a few moments to think about the answer.
+
+--... with something very special in common!--
+Ok then, the answer is: all of the problems that I have listed (and so many more!) share the fact that they can be addressed by using methods that have, at their core, the same probabilistic result. This result is universally known as Bayes’ Theorem or Bayes’ Rule. That’s pretty impressive!
+Let’s take a first quick look at this equation (we will get back to it later) to get a sense of what it involves. As you can see, we are working with two events A and B, and probabilities defined on them and their conditioning on each other.
+For now, let us just focus on the fact that this formula allows to express the probability of B given A (the probability of B happening, given that A has already happened), as a function of the probability of A given B, with the reverse conditioning order. Throughout this course and the rest of your studies and professional life, you will have plenty of opportunities to appreciate how useful this result is.
+
+-- Car insurance – encore--
+Let’s get back to the insurance example from our last lecture on conditional probabilities. We had a certain number of new policyholders, that were cross-classified according to their being prone or not to have accidents, and their having had (or not) an accident during the first year of policy.
+We know – from our previous lectures – how to compute joint, marginal and conditional probabilities from such a table. Let’s leave this here for the time being – you might want to get back to it later to double-check some calculations – and make the thing a bit more interesting.
+
+--A more interesting situation--
+Outside of textbook examples, it is often the case that we possess incomplete information with regards to a problem we are trying to solve. Say we only have knowledge of how likely it is to have an accident during the first year as policyholder, given the category (prone or not prone to accidents). 
+Taking a look at the table, we see that for those prone to having an accident, there is a 40% chance to have one within the first year, which reduces to 20% if we look at the non-prone group.
+Very good. Let’s also assume that we have had a very informative chat with a subject matter expert – maybe an older colleague – and can confidently assume that 25% of all new policyholders fall in the accident-prone category.
+Excellent! But… What else could be useful to know? Well, car insurances are usually not static: if you do well, your premium will go down or stay the same, if you have an accident it will tend to go up.
+At this point, your boss would really, really like to know how to classify new policy holders based on their behaviour on their first year of policy. In other words, we are now interested in looking at the inverse problem: how likely is a policyholder to be prone to accidents, given they had an accident?
+
+--Reversing the conditioning with Bayes' Theorem!--
+In order to answer the question, we need to reverse the conditioning. Guess what famous result from the theory of probability allows us to do so?
+So, let’s see. We now wish to know the probability of B (being prone) given that A (having an accident) has already occurred. In other words, we want P(B|A). Bayes’ theorem gives us a way to exploit the available information on P(A|B) to answer the question.
+Looking at the formula, we see that we need P(A|B), which we have, it’s 0.4, as per the previous table; we need P(B), which our expert colleague gave us, it’s 0.25; and we need P(A), which we still lack.
+
+--A useful decomposition--
+Well, remember the law of total probability, that we introduced in the previous lecture? P(A) can be readily obtained through that decomposition.
+We can write that P(A), that is, the probability of having an accident, is equal to the probability of having an accident conditional on being prone, times the probability of being prone, plus the probability of having an accident conditional on not being prone, times the probability of not being prone. 
+The computation is straightforward, and leads to estimating in 0.4 – or 40% – the probability of being in the group of those prone to accidents, given that one occurred.
+You can double-check the calculation by computing this probability directly from the contingency table: within the 50 that have had an accident, 20 are in the prone group. 20/50=0.4. Voila’!
+Of course, this is cheating, and in reality we typically would not have that nice table, or we might not trust our numbers enough.
+
+--A different angle--
+Now, Bayes’ theorem is special in many ways. One, possibly the most important, is that a trivial rearrangement of the terms of the equation allows to interpret it using a completely different lens.
+What we do, is to simply isolate the probability of the event of interest, P(B) here. Now the relationship can be seen as describing how P(B) transforms into P(B|A), after having accounted for A occurring, via a multiplicative factor that can either inflate (if greater than 1), deflate (if less than 1), or not change (if equal to 1) the original probability.
+Looking back at our insurance example, we can read it as updating our belief on a policyholder being in the prone-to-accidents group, after having learned of an accident.
+While relatively simple to understand, this shift of perspective has profound implications as it provides an interpretation of the theorem as a paradigm or mechanism of learning from experience.
+
+XXX
+Now it seems like a good place to catch our breath and see if there’s any question, you can write them in the chat, before we proceed to another example, this time from the medical field, and then go ahead to discuss more in detail the derivation of Bayes’ theorem. We will see it is pretty straightforward. We will also discuss some generalisations of the result, and some possible applications.
+

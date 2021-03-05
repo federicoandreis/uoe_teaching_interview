@@ -1,0 +1,105 @@
+\usepackage{animate}
+\usepackage{ragged2e}
+
+%%% probability trees
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+
+% Set the overall layout of the tree
+\tikzstyle{level 1}=[level distance=4cm, sibling distance=.75cm]
+\tikzstyle{level 2}=[level distance=4cm, sibling distance=.5cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [circle, minimum width=3pt,fill, inner sep=0pt]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+
+%%%
+
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[page number]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{title page}[empty]
+
+\setbeamerfont{subtitle}{size=\small}
+
+\setbeamercovered{transparent}
+
+%%% columns
+\newcommand{\columnsbegin}{\begin{columns}}
+\newcommand{\columnsend}{\end{columns}}
+%%%
+
+\definecolor{burgundy}{HTML}{800020}
+\definecolor{myorange}{HTML}{8A310A}
+
+\definecolor{mygreen}{HTML}{37a149}
+\definecolor{myblue}{HTML}{0000D6}
+
+\definecolor{offwhite}{HTML}{FDFDFD}
+
+\setbeamercolor*{title}{fg=burgundy}
+\setbeamercolor*{background canvas}{bg=offwhite}
+\setbeamercolor*{frametitle}{fg=burgundy,bg=gray!20}
+\setbeamercolor*{section in toc}{fg=burgundy}
+\setbeamercolor*{footline}{fg=burgundy!70}
+\setbeamercolor*{section}{fg=burgundy}
+\setbeamercolor*{structure}{fg=burgundy}
+
+% \hypersetup{
+%     pdfborderstyle={/S/U/W 1},   % underline links instead of boxes
+%     urlbordercolor=myblue        % color of external links
+% }
+
+\hypersetup{colorlinks=true,urlcolor=myblue}
+
+%\setbeamercolor*{local structure}{fg=burgundy}
+
+
+%\setbeamercolor*{subsection in toc}{fg=burgundy}
+%\setbeamercolor*{item projected}{fg=burgundy}
+
+\setbeamertemplate{itemize item}{\color{burgundy}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{burgundy}\scriptsize{$\bullet$}}
+\let\Tiny=\tiny
+
+% 
+% \AtBeginPart{}
+% \AtBeginSection[]{
+%   \setbeamercolor{section in toc shaded}{fg=gray}
+%   \setbeamercolor{section in toc}{fg=burgundy}
+%   \setbeamercolor{subsection in toc shaded}{fg=gray}
+%   \setbeamercolor{subsection in toc}{fg=burgundy}
+%   \setbeamercolor{subsubsection in toc shaded}{fg=gray}
+%   \setbeamercolor{subsubsection in toc}{fg=burgundy}
+% }
+% \AtBeginSubsection{}
+% \AtBeginSubsubsection{}
+\setlength{\emergencystretch}{0em} % prevent overfull lines
+\setlength{\parskip}{0pt}
+
+
+%%%
+\def\insertpresentationendframe{\inserttotalframenumber}
+\makeatletter
+\g@addto@macro{\appendix}{\immediate\write\@auxout{\string\@writefile{nav}{\noexpand\headcommand{\noexpand\def\noexpand\insertpresentationendframe{\the\c@framenumber}}}}}
+\makeatother
+%%%
+
+\defbeamertemplate*{footline}{my footline}
+{
+\ifnum \insertpagenumber=1
+
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=\paperwidth,ht=.80ex,dp=1ex,center]{}%
+% empty environment to raise height
+\end{beamercolorbox}}%
+\vskip0pt%
+\else
+
+\hspace*{.5cm}\Tiny{%
+\hspace*{50pt} \insertsection \hfill \insertframenumber/\inserttotalframenumber  \hspace*{.05cm} \vspace*{10pt}}%
+
+\fi
+}

@@ -1,0 +1,314 @@
+---
+title: |
+  | Theological conundrums, lost bombs, and
+  | reverse conditioning: meet Bayes' Theorem
+author: |
+  | **Federico Andreis**
+  | \footnotesize University of Xxxxxxxx
+  | mail: federico.andreis@gmail.com
+date: |
+  | \normalsize Probability (MATH08066)
+  | 5 March 2021
+output:
+  beamer_presentation:
+    toc: no
+    fonttheme: structurebold
+    keep_tex: yes
+    includes:
+      in_header: tex.tex
+  slidy_presentation: default
+  ioslides_presentation: default
+classoption: "aspectratio=169"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Course materials and resources
+
+- Course main page [[link](...)]
+\bigskip
+
+- sensitive contents trigger warning [[link](...)]
+\bigskip
+
+- dedicated web forum - Piazza [[link](https://piazza.com/class/gw9jakygzvs616)]
+\bigskip
+
+- (virtual) office hours: Tuesday 14-16 // please mail me [[here](federico.andreis@gmail.com)] to book a slot!
+
+# A (very) diverse set of problems...
+
+Consider the following:
+\bigskip
+
+- building a case for the abolition of capital punishment in late 1700s France
+\bigskip
+
+- recovering the daily wheel settings of the Enigma machine during WWII
+\bigskip
+
+- locating a hydrogen bomb on the Mediterranean seabed in the '60s
+\bigskip
+
+- invalidating the arguments that led to a life sentence for double infanticide in the 90s in the UK
+\bigskip
+
+- assessing the likelihood of having a disease, in light of a diagnostic test result
+\bigskip
+
+- creating an automatic filter for email spam.
+
+# ... with something very special in common!
+
+They can all be tackled using methods, whose core functioning is based on the same probabilistic result, universally known as **Bayes' theorem**.
+\bigskip
+
+$$P(B|A) = \frac{P(A|B)P(B)}{P(A)}$$
+\bigskip
+
+where, following the usual notation, $A$ and $B$ denote events and $P(A)>0$.
+\bigskip
+
+The result follows from the commutative property of the intersection operator, and the definition of conditional probability - more on this later.
+
+# Car insurance - encore
+
+Let us get back to the car insurance example we have used in our previous lecture to play around with conditional probabilities. 
+\bigskip
+\bigskip
+
+\begin{table}[]
+\begin{tabular}{l|cc|c}
+            & $B$: prone & $B^c$: not prone &     \\
+            \hline
+$A$: accident & 20 & 30 & 50 \\
+\hline
+$A^c$: no accident & 30 & 120 & 150  \\
+\hline
+            & 50 & 150 & 200 
+\end{tabular}
+\end{table}
+\bigskip
+\bigskip
+
+We have already learned how to derive joint and conditional probabilities starting from this contingency table.
+
+# A more interesting situation
+
+Consider a more realistic context of incomplete information. Specifically, imagine we only have the conditional distributions of having a car accident, given proneness.
+\bigskip
+\bigskip
+
+\begin{table}[]
+\begin{tabular}{l|cc|c}
+            & $B$: prone & $B^c$: not prone &     \\
+            \hline
+$A$: accident & \textbf{0.4} & \textbf{0.2} &  \\
+\hline
+$A^c$: no accident & \textbf{0.6} & \textbf{0.8} &  \\
+\hline
+            & 1 & 1 & 
+\end{tabular}
+\end{table}
+\bigskip
+\bigskip
+
+From historical data, we also happen to know that about $25\%$ of all new policyholders tend to be accident-prone.
+\pause
+\bigskip
+
+What about the probability of **being accident-prone, given that an accident occurred**?
+
+# Reversing the conditioning with Bayes' Theorem
+
+Let's select a new policyholder at random from the pool who had an accident in the first year ($A$). What is the chance that the policyholder is prone to accidents ($B$)?
+\bigskip
+
+\begin{table}[]
+\begin{tabular}{l|cc|c}
+            & $B$: prone & $B^c$: not prone &     \\
+            \hline
+$A$: accident & \textbf{?} & \textbf{?} &  1\\
+\hline
+$A^c$: no accident & \textbf{?} & \textbf{?} &  1\\
+\hline
+            &  &  & 
+\end{tabular}
+\end{table}
+\bigskip
+\bigskip
+
+We want $P(B|A)$, and we know $P(B)=0.25$, $P(A|B)=0.4$. By Bayes' theorem
+
+$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}=\frac{0.4\times0.25}{P(A)}.$$
+We still need the unconditional probability of having an accident $P(A)$.
+
+# A useful decomposition
+
+Using the law of total probability from last lecture, we can write
+
+$$P(A) = P(A|B)P(B) + P(A|B^c)P(B^c).$$
+Hence
+\vskip-1.5em
+\begin{align}
+\nonumber
+P(\text{accident}) = &P(\text{accident} | \text{prone})P(\text{prone})+\\ \nonumber
++ &P(\text{accident} | \text{not prone})P(\text{not prone})\\ \nonumber
+=&0.4\times 0.25 + 0.2\times (1-0.25) = 0.25. \nonumber
+\end{align}
+
+leading to 
+
+$$P(B|A)=\frac{0.4\times0.25}{P(A)}=\frac{0.4\times0.25}{0.25}=0.4.$$
+\smallskip
+
+So, we believe that policyholders who had an accident during the first year, have a $40\%$ chance of belonging to the accident-prone group.
+
+# A different angle...
+
+We can express Bayes' theorem in an equivalent, yet surprisingly revealing way. Specifically, we can write
+\bigskip
+
+$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}=\frac{P(A|B)}{P(A)}P(B).$$
+\bigskip
+
+An initial probability $P(B)$ is **updated** into a conditional probability $P(B|A)$ after taking into account the event $A$ occurring. In our insurance example, it means reviewing our belief on a policyholder being prone to accident, after having learned of an accident.
+\bigskip
+
+While straightforward to understand, this has profound implications, as it provides an interpretation of Bayes' theorem as describing a **mechanism of learning from experience**.
+
+# A medical example: diagnostic tests
+
+A new home HIV test is claimed to have $95\%$ sensitivity and $96\%$ specificity, i.e. for people with HIV $95\%$ will get a positive test, while for people without HIV, $96\%$ will get a negative test.
+\bigskip
+\bigskip
+
+The test is to be used in a population with an HIV prevalence of $1/100$.
+\bigskip
+\bigskip
+
+**Question**: if someone gets tested and a positive result is obtained, what is the chance they actually have the disease?
+
+# Diagnostic tests: solution
+
+We are interested in $P(\text{HIV}|\text{positive})$. Now,
+\bigskip
+
+* sensitivity: $P(\text{positive}|\text{HIV})=0.95$
+\smallskip
+
+* specificity: $P(\text{negative}|\text{no HIV})=0.96$
+\smallskip
+
+* prevalence: $P(\text{HIV})=0.01$.
+\bigskip
+
+$P(\text{HIV}|\text{positive}) = P(\text{positive}|\text{HIV})P(\text{HIV})/P(\text{positive})$ by Bayes' theorem, so all we need is $P(\text{positive})$:
+\vskip-1.5em
+\begin{align}
+\nonumber
+P(\text{positive}) &= P(\text{positive}|\text{HIV})P(\text{HIV})+\\ \nonumber
+&+P(\text{positive}|\text{no HIV})P(\text{no HIV})\\ \nonumber
+&=0.95\times0.01+(1-0.96)\times(1-0.01)=0.0491
+\end{align}
+hence $P(\text{HIV}|\text{positive})=0.95\times0.01/0.0491\approx0.19$.
+
+# Derivation of Bayes' theorem
+
+By the commutative property of the intersection operator, it follows that
+$$P(A\cap B) = P(B\cap A)$$
+
+applying the chain rule to both sides yields
+$$P(A|B)P(B) = P(B|A)P(A)$$
+
+or, equivalently,
+$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}=\frac{P(B|A)}{P(B)}P(A).$$
+
+
+# Generalisation to more than two events
+
+In both theory and applications, it is often the case that we are interested in looking at more than two conditioning events.
+\bigskip
+\medskip
+
+Bayes' theorem can be extended to account for such situations. Consider a partition of the sample space $\{A_1, ..., A_k\}$, and let $B$ denote an event of interest. Then
+
+$$P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^k P(B|A_j)P(A_j)}=\frac{P(B|A_i)}{P(B)}P(A_i), \quad P(B)>0.$$
+\medskip
+
+The denominator is once again derived using the law of total probability.
+
+# Who is responsible for Bayes' theorem?
+
+While this might seem a trick question, Bayes' theorem has a long and interesting story. Did you know that:
+\bigskip
+
+- the result is named after the reverend [Thomas Bayes](https://mathshistory.st-andrews.ac.uk/Biographies/Bayes/) (1702-1761) who, however, only proposed a solution for a very special case, and never published it
+\bigskip
+
+- Bayes' work containing the original seed of the theorem was polished and published, posthumously, by his friend, editor and American War of Independence's hero [Richard Price](https://mathshistory.st-andrews.ac.uk/Biographies/Price/) (1723-1791)
+\bigskip
+
+- the formulation we know and use today is due to French scientist [Pierre-Simon Laplace](https://mathshistory.st-andrews.ac.uk/Biographies/Laplace/) (1749-1827), who stripped the original problem of its religious connotation
+\bigskip
+
+- Bayes' theorem appears, therefore, to be yet another case of a mathematical result obeying [Stigler's law of eponymy](https://www.jstor.org/stable/2682766?origin=crossref&seq=1).
+
+# Interesting readings
+
+- "The theory that would not die - how bayes' rule cracked the enigma code, hunted down russian submarines, emerged triumphant from two centuries of controversy" - McGrayne (2012) [book review](https://www.ams.org/notices/201205/rtx120500657p.pdf)
+\bigskip
+
+- "An Essay towards solving a Problem in the Doctrine of Chances" - Bayes, Price (1763) [original essay](https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1763.0053)
+\bigskip
+
+- "Memoir on the Probability of the Causes of Events" - Stigler, Laplace (1986) [translation of the original essay](https://www.jstor.org/stable/2245476)
+\bigskip
+
+- "Edward Simpson: Bayes at Bletchley Park" - Simpson (2010) [article](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/j.1740-9713.2010.00424.x)
+\bigskip
+
+- "Royal Statistical Society concerned by issues raised in Sally Clark case" - RSS Press Office (2001) [article](http://www.inference.org.uk/sallyclark/RSS.html)
+
+# Let's wrap up
+
+In today's lecture we have learned about one of the most versatile and widely used probabilistic results: Bayes' theorem. The key takeaway points are:
+\bigskip
+
+1. it allows to express conditional probability statements in terms of the reverse conditioning
+\bigskip
+
+2. it has been (and keeps being) successfully applied to a wildly diverse set of problems, both applied and theoretical
+\bigskip
+
+3. while algebraically straightforward, it has profound implications if we choose to look at it as a learning paradigm.
+\bigskip
+
+In the next lecture, we will introduce and formalise the concept of random variable and its distribution.
+
+<!-- # Other useful online resources -->
+
+<!-- Peter Donnelly [link](https://www.ted.com/talks/peter_donnelly_how_juries_are_fooled_by_statistics) -->
+<!-- <https://www.analyticsvidhya.com/blog/2019/06/introduction-powerful-bayes-theorem-data-science/> -->
+<!-- <https://machinelearningmastery.com/bayes-theorem-for-machine-learning/> -->
+<!-- <https://towardsdatascience.com/bayes-rule-with-a-simple-and-practical-example-2bce3d0f4ad0> -->
+<!-- <https://www.accessscience.com/content/applications-of-bayes-theorem-for-predicting-environmental-damage/YB100249> -->
+<!-- <https://corporatefinanceinstitute.com/resources/knowledge/other/bayes-theorem/> -->
+
+<!-- <https://www.mathsisfun.com/data/bayes-theorem.html> -->
+<!-- <https://www.sciencedirect.com/topics/psychology/bayes-rule> -->
+<!-- <https://plato.stanford.edu/entries/bayes-theorem/supplement.html> -->
+<!-- <https://www.statisticshowto.com/probability-and-statistics/probability-main-index/bayes-theorem-problems/> -->
+<!-- <https://blogs.cornell.edu/info2040/2018/11/19/bayes-theorem-application-in-everyday-life/> -->
+
+<!-- <https://brilliant.org/wiki/bayes-theorem/> -->
+<!-- <https://www.britannica.com/topic/Bayess-theorem> -->
+<!-- [https://medium.com/\@macromoltek/application-of-bayes-theorem-to-big-data-68a37242dbdf](https://medium.com/@macromoltek/application-of-bayes-theorem-to-big-data-68a37242dbdf){.uri} -->
+<!-- <https://aip.scitation.org/doi/pdf/10.1063/1.5013945> -->
+
+<!-- <https://www.quora.com/What-are-some-interesting-applications-of-Bayes-theorem> -->
