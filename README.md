@@ -19,7 +19,7 @@ WCAG Level AA pass: Normal Text, Large Text, Graphical Objects and User Interfac
 WCAG Level AAA pass: Normal Text, Large Text.
 
 CVD check
-![colour palette test](palette.png).
+![colour palette test](palette.png){ width: 200px; }.
 
 ## Software and license
 The recording was realised using [OBS 26.1.1](https://obsproject.com/), with the video feed going through a trial version of [XSplit Vcam](https://www.xsplit.com/vcam) for background removal. This material is released under the [GNU Free Documentation License](https://www.gnu.org/licenses/fdl-1.3.html), Version 1.3.
