@@ -4,12 +4,12 @@ This repository contains the materials requested for my teaching interview at th
 ## Direct links
 The learning material for this lecture comprises:
 
-- slides (PDF | RMD)
-- video (MP4 | ...)
-- transcript (TXT).
+- slides ([PDF](presentation.pdf) | [RMD](presentation.rmd) + [style file](tex.tex))
+- video ([YouTube](https://youtu.be/_6c_hZJGp6Q))
+- transcript ([DOCX](transcript.docx) | [TXT](transcript.txt)).
 
 ## Accessibility
-A full transcript for the recording is available. I generated closed captions while recording, but unfortunately something did not quite work and they were not of good enough quality to be included. I then resolved to upload the video on YouTube so that the automatic cc generation feature could be exploited (not optimal, but...).
+A full transcript for the recording is available. I generated closed captions while recording, but unfortunately something did not quite work and they were not of good enough quality to be included. I then resolved to upload the video on YouTube so that the automatic cc generation feature could be exploited (admittedly not optimal, and it will take some time for the platform to generate and publish them, hopefully they'll be there by when you are watching it!)
 
 [Colour vision deficiency](https://www.nhs.uk/conditions/colour-vision-deficiency/) (CVD) is a relatively prevalent condition (the NHS estimates in ~4.5% the proportion of British population affected by some form of it). While a second-year class at a Scottish university is likely be more diverse than the general population, we cannot rule out that some students might have congenital difficulties in distinguishing colours.
 
